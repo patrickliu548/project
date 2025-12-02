@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}Login{% endblock %}
+{% block body %}
+    <h1>Login</h1>
+    <form method="post" action="login">
+        <input type="email" name="email">
+        <br>
+        <input type="passsword" name="password">
+        <br>
+        <input type="checkbox" name="remember"> Remember Me
+        <br>
+        <input type="submit">
+    </form>
+{% endblock %}
