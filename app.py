@@ -8,7 +8,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 app = Flask(__name__)
 
-app.secret_key = os.environ.get("SECRET_KEY")
+app.secret_key = os.environ.get("SECRET_KEY") or secrets.token_hex(16)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -68,7 +68,7 @@ def load_user(user_id):
 def apology(message, code=400):
     """Render message as an apology to user."""
 
-    return render_template("apology.html", top=code, bottom=message), code
+    return render_template("apology.html", code=code, message=message), code
 
 @app.route("/", methods=["GET", "POST"])
 @login_required
